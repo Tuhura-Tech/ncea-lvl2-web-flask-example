@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ncea-lvl2-web-flask-example"
+version = "0.1.0"
+description = "MIT"
+authors = ["Leon Bowie <leon@tuhuratech.org.nz>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Flask = "^2.2.3"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+mypy = "^1.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
