@@ -1,18 +1,42 @@
-[tool.poetry]
+[project]
 name = "ncea-lvl2-web-flask-example"
-version = "0.1.0"
-description = "MIT"
-authors = ["Leon Bowie <leon@tuhuratech.org.nz>"]
+version = "1.0.0"
+description = "Example project for NCEA lvl 2"
+authors = [{ name = "Leon Bowie", email = "leon@tuhuratech.org.nz" }]
+dependencies = ["flask>=3.0.0"]
+requires-python = ">=3.11"
 readme = "README.md"
+license = { text = "AGPL-3.0-or-later" }
 
-[tool.poetry.dependencies]
-python = "^3.11"
-Flask = "^2.2.3"
+[tool.pdm.dev-dependencies]
+style = ["mypy>=1.7.1", "ruff>=0.1.6"]
+test = ["pytest>=7.4.3", "coverage>=7.3.2"]
 
-[tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
-mypy = "^1.1.1"
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.coverage.run]
+branch = true
+source = ["flaskapp"]
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    #docstring
+    "D",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

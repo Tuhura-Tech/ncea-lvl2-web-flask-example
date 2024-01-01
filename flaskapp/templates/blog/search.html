@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Search{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row g-5 m-auto">
+        <form>
+            <div class="input-group mb-3">
+                <input name="query" id="query" placeholder="{{ query }}" class="form-control" required>
+                <button type="submit" class="btn">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="row g-5">
+        <div class="">
+            {% for post in posts %}
+            {% include 'components/post.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+<article class="blog-post">
+    <h2 class="display-5 link-body-emphasis mb-1"><a href='{{ post["id"] }}/post'
+            style="text-decoration: inherit; color: inherit;">{{ post["title"] }}</a></h2>
+    <p class="blog-post-meta">{{ post["created"] }} - {{ post["comment_amount"] }} comments</p>
+    <p>{{ post["body"] }}...</p>
+    <p class=""><a href='{{ post["id"] }}/post' class="text-body-emphasis fw-bold">Continue reading...</a></p>
+</article>
