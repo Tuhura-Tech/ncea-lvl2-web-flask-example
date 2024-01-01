@@ -2,7 +2,6 @@
 import sqlite3
 
 import pytest
-
 from flaskapp.db import get_db
 
 

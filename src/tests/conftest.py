@@ -3,7 +3,6 @@ import os
 import tempfile
 
 import pytest
-
 from flaskapp import create_app
 from flaskapp.db import get_db, init_db
 

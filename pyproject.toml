@@ -12,8 +12,20 @@ license = { text = "AGPL-3.0-or-later" }
 style = ["mypy>=1.7.1", "ruff>=0.1.6"]
 test = ["pytest>=7.4.3", "coverage>=7.3.2"]
 
+[tool.pdm.scripts]
+coverage_run = { cmd = ["coverage", "run", "-m", "pytest", "."] }
+coverage_report = { cmd = ["coverage", "report"] }
+coverage = { composite = ["coverage_run", "coverage_report"] }
+lint = { cmd = ["ruff", "check", ".", "--fix"] }
+format = { cmd = ["ruff", "format", "."] }
+typecheck = { cmd = ["mypy", "."] }
+start = { cmd = ["flask", "--app", "src/flaskapp", "run"] }
+dev = { cmd = ["flask", "--app", "src/flaskapp", "run", "--debug"] }
+test = { cmd = ["pytest"] }
+all = { composite = ["lint", "format", "typecheck", "coverage"] }
+
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["src/tests"]
 
 [tool.coverage.run]
 branch = true
