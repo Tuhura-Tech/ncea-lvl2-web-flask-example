@@ -52,29 +52,6 @@ def get_comments(id):
     return post
 
 
-@bp.route("/create", methods=("GET", "POST"))
-def create():
-    """Create post page."""
-    error = None
-    if request.method == "POST":
-        title = request.form["title"]
-        body = request.form["body"]
-
-        if not title:
-            error = "Title is required."
-
-        if error is None:
-            db = get_db()
-            db.execute(
-                "INSERT INTO post (title, body) VALUES (?, ?)",
-                (title, body),
-            )
-            db.commit()
-            return redirect(url_for("blog.index"))
-
-    return render_template("blog/create.html", error=error)
-
-
 @bp.route("/")
 def index():
     """Main view page."""
@@ -116,6 +93,29 @@ def post(id):
         comments=comments,
         error=error,
     )
+
+
+@bp.route("/create", methods=("GET", "POST"))
+def create():
+    """Create post page."""
+    error = None
+    if request.method == "POST":
+        title = request.form["title"]
+        body = request.form["body"]
+
+        if not title:
+            error = "Title is required."
+
+        if error is None:
+            db = get_db()
+            db.execute(
+                "INSERT INTO post (title, body) VALUES (?, ?)",
+                (title, body),
+            )
+            db.commit()
+            return redirect(url_for("blog.index"))
+
+    return render_template("blog/create.html", error=error)
 
 
 @bp.route("/search")

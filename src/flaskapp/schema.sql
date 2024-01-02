@@ -12,4 +12,4 @@ CREATE TABLE comment (
     body TEXT NOT NULL,
     post_id INTEGER NOT NULL,
     FOREIGN KEY (post_id) REFERENCES post (id)
-)
+);
